@@ -1,0 +1,161 @@
+<h1>Сведения об эпидемиологической обстановке</h1>
+<h2>в {{otdelNumber}} отделе Оперативного управления ФСО России по состоянию на {{ date | date: 'dd.MM.yyyy' }}</h2>
+
+<table class="table">
+  <thead style="text-align: center">
+  <th>
+    № п/п
+  </th>
+  <th>
+    Наименование показателя
+  </th>
+  <th>
+    Кол-во
+  </th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>
+      1.
+    </td>
+    <td>
+      Находится на карантине (в связи с контактами с гражданами, заболевшими коронавирусной инфекцией,
+      или прибывшие из-за границы)
+    </td>
+    <td>
+      <input type="number" min="0" [(ngModel)]="quarantine" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      2.
+    </td>
+    <td>
+      Переведено на дистанционное исполнение служебных (трудовых) обязанностей на дому
+    </td>
+    <td>
+      <input type="number" min="0" [(ngModel)]="distance" required>
+    </td>
+  </tr>
+  <tr>
+    <td>
+      3.
+    </td>
+    <td>
+      Отстранено от службы в связи с повышенной температурой тела или иными симптомами респираторных
+      заболеваний, за сутки
+    </td>
+    <td>
+      <input type="number" min="0" [(ngModel)]="suspended" required>
+    </td>
+  </tr>
+  <tr>
+    <td rowspan="2">
+      4.
+    </td>
+    <td>
+      Проведено исследований на наличие коронавирусной инфекции, всего
+    </td>
+    <td class="data">
+      {{ research + researchToday }}
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: right">
+      из них за сутки
+    </td>
+    <td>
+      <input type="number" [(ngModel)]="researchToday" min="0" required>
+    </td>
+  </tr>
+  <tr>
+    <td rowspan="2">
+      5.
+    </td>
+    <td>
+      Находится на лечении с заболеваниями коронавирусной инфекцией, пневмонией и ОРВИ, всего
+      <div *ngFor="let person of sickPeople, let i = index">
+        <div>{{ person.name }}, {{ person.address }}, тел. {{ person.phone }}</div>
+        <button *ngIf="!sickCovid.includes(person)" class="btnCovid" (click)="addCovidPerson(i)">Диагностирован Covid-19</button>
+        <button *ngIf="!sickCovid.includes(person)" class="btnCure" (click)="recoverPerson(i)">Выздоровел</button>
+        <hr>
+      </div>
+    </td>
+    <td class="data">
+      {{ sickPeople.length + sickPeoplePerDay.length }}
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: right">
+      <div>
+      <button class="btnSick" (click)="addPerson()">Добавить</button>
+      </div>
+      <div>
+        <div *ngFor="let person of sickPeoplePerDay, let i = index">
+          <input class="personInput" style="font-size: 0.9rem;" type="text" placeholder="Фамилия, имя, отчество" [(ngModel)]="person.name" required>
+          <input class="personInput" style="width: 30rem; font-size: 0.9rem;" type="text" placeholder="Адрес" [(ngModel)]="person.address" required>
+          <input class="personInput" style="width: 20rem; font-size: 0.9rem;" type="text" placeholder="Телефон для связи" [(ngModel)]="person.phone" required>
+          <button class="btn" (click)="deleteSickPerson(i)">Удалить</button>
+          <hr>
+        </div>
+      из них за сутки
+      </div>
+    </td>
+    <td class="data">
+      {{ sickPeoplePerDay.length }}
+    </td>
+  </tr>
+  <tr>
+    <td>
+      6.
+    </td>
+    <td>
+      Заболевших коронавирусной инфекцией, пневмонией и ОРВИ, за сутки
+    </td>
+    <td>
+      <input type="number" [(ngModel)]="covidToday" required>
+    </td>
+  </tr>
+  <tr>
+    <td rowspan="2">
+      7.
+    </td>
+    <td>
+      Подтверждено наличие коронавирусной инфекцией у находящихся на лечении
+    </td>
+    <td class="data">
+      {{ sickCovid.length }}
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: right">
+      <p style="text-align: left; color: #ee4736" *ngFor="let person of sickCovid, let i = index">{{ person.name }} [Ковид]</p>
+      в том числе за сутки
+    </td>
+    <td class="data">
+      {{ sickCovid.length }}
+    </td>
+  </tr>
+  <tr>
+    <td rowspan="2">
+      8.
+    </td>
+    <td>
+      Выздоровело после заболевания коронавирусной инфекцией, ОРВИ и пневмонией
+      (включая бессимптомных с положительным тестом), всего
+    </td>
+    <td style="text-align: center">
+      {{ recoveredTotal }}
+    </td>
+  </tr>
+  <tr>
+    <td style="text-align: right">
+      <p style="text-align: left; color: #219a08" *ngFor="let person of recoveredPeople, let i = index">{{ person.name }} [Выздоровел]</p>
+      из них за сутки
+    </td>
+    <td style="text-align: center">
+      {{ recoveredPeople.length }}
+    </td>
+  </tr>
+  </tbody>
+</table>
