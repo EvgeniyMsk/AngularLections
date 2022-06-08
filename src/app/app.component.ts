@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {interval, Observable, Subject, Subscription} from "rxjs";
 import {filter} from "rxjs/operators";
+import {FormControl, FormGroup, Validators} from "@angular/forms";
 
 export interface Post {
   title: string,
@@ -46,6 +47,8 @@ export class AppComponent implements OnInit {
     }, 5000)
   })
 
+  form: FormGroup
+
   myDate: Observable<Date> = new Observable<Date>(obs => {
     setInterval(() => {
       obs.next(new Date())
@@ -56,6 +59,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.form = new FormGroup({
+      email: new FormControl('', [Validators.email, Validators.required]),
+      password: new FormControl(null, [Validators.required, Validators.minLength(5)])
+    })
+  }
+
+  submit() {
+    console.log('Sumbitted', this.form)
+    console.log({...this.form.value})
   }
 
   addPost(post: Post) {

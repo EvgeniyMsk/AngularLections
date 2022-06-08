@@ -3,7 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { PostFormComponent } from './post-form/post-form.component';
 import { PostComponent } from './post/post.component';
 import {HttpClientModule} from "@angular/common/http";
@@ -20,6 +20,7 @@ import { StyleDirective } from './directives/style.directive';
 import { IfnotDirective } from './directives/ifnot.directive';
 import { MultByPipe } from './pipes/mult-by.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
+import { TestComponentComponent } from './components/test-component/test-component.component';
 
 @NgModule({
   declarations: [
@@ -29,7 +30,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     StyleDirective,
     IfnotDirective,
     MultByPipe,
-    FilterPipe
+    FilterPipe,
+    TestComponentComponent
   ],
   imports: [
     BrowserModule,
@@ -44,7 +46,8 @@ import { FilterPipe } from './pipes/filter.pipe';
     MatIconModule,
     MatListModule,
     MatSliderModule,
-    MatTabsModule
+    MatTabsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
