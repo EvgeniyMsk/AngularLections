@@ -28,7 +28,6 @@ export class PostComponent implements OnInit {
   @ContentChild('info', {static: true}) infoRef: ElementRef
 
   ngOnInit(): void {
-    console.log(this.infoRef.nativeElement.style.color = 'red')
   }
 
   removePost() {

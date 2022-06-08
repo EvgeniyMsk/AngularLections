@@ -18,6 +18,8 @@ import {MatSliderModule} from "@angular/material/slider";
 import {MatTabsModule} from "@angular/material/tabs";
 import { StyleDirective } from './directives/style.directive';
 import { IfnotDirective } from './directives/ifnot.directive';
+import { MultByPipe } from './pipes/mult-by.pipe';
+import { FilterPipe } from './pipes/filter.pipe';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,9 @@ import { IfnotDirective } from './directives/ifnot.directive';
     PostFormComponent,
     PostComponent,
     StyleDirective,
-    IfnotDirective
+    IfnotDirective,
+    MultByPipe,
+    FilterPipe
   ],
   imports: [
     BrowserModule,
