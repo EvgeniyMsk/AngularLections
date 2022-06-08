@@ -1,8 +1,18 @@
 <div class="container">
-<!--  <h1>Angular Components</h1>-->
-<!--  <app-post-form (onAdd)="updatePosts($event)"></app-post-form>-->
-<!--  <hr/>-->
-<!--  <app-post *ngFor="let p of posts" [post]="p"></app-post>-->
-<!--  <hr/>-->
-  <app-covidinfo></app-covidinfo>
+  <h1>Angular Application</h1>
+  <app-post-form (em)="addPost($event)"></app-post-form>
+  <app-post *ngFor="let post of posts" [post]="post" (remove)="removePost($event)">
+    <div #info>
+      <small *ngIf="post.text.length > 5; else short">Пост длинный</small>
+      <ng-template #short>
+        <small>Пост короткий</small>
+      </ng-template>
+    </div>
+  </app-post>
+  <button class="btn" (click)="isVisible = !isVisible">Toggle</button>
+  <div class="wrap" *appIfnot="!isVisible">
+    Hello my darling!
+  </div>
+  <p appStyle color="green" [dStyles]="{ border: '1px solid blue', fontWeight: 'bold', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+  <p appStyle color="blue" [dStyles]="{ border: '1px solid red', fontWeight: 'bold', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 </div>

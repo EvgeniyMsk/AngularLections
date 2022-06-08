@@ -1,5 +1,8 @@
 <div class="card">
-  <h2>{{ post.title }}</h2>
+  <p>{{ post.id }}</p>
+  <p>{{ post.title }}</p>
   <p>{{ post.text }}</p>
-  <p>{{ name }}</p>
+  <button class="btn" (click)="removePost()">&times;</button>
+  <button class="btn" (click)="changeColor()">Change Color</button>
+  <ng-content></ng-content>
 </div>
