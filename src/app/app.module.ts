@@ -22,6 +22,11 @@ import { MultByPipe } from './pipes/mult-by.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { TestComponentComponent } from './components/test-component/test-component.component';
 import { SwitchComponent } from './switch/switch.component';
+import { HttpClientComponent } from './components/http-client/http-client.component';
+import { ValidatorCourseComponent } from './components/validator-course/validator-course.component';
+import { PipesCourseComponent } from './components/pipes-course/pipes-course.component';
+import { DirectivesCourseComponent } from './components/directives-course/directives-course.component';
+import { BaseCourseComponent } from './components/base-course/base-course.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +38,12 @@ import { SwitchComponent } from './switch/switch.component';
     MultByPipe,
     FilterPipe,
     TestComponentComponent,
-    SwitchComponent
+    SwitchComponent,
+    HttpClientComponent,
+    ValidatorCourseComponent,
+    PipesCourseComponent,
+    DirectivesCourseComponent,
+    BaseCourseComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,21 @@
+<app-test-component></app-test-component>
+<p>{{ e | number:'1.1-4' }}</p>
+<p>{{ str | lowercase | titlecase }}</p>
+<p>{{ str | titlecase | slice: 1:-2}}</p>
+<p>{{ date | date: 'HH:mm:ss'}}</p>
+<p>{{ fl }}</p>
+<p>{{ fl | currency}}</p>
+<p>{{ fl | percent }}</p>
+<pre>{{ obj | json }}</pre>
+<p>{{ 2 | multBy: 2 }}</p>
+<p>{{ 3 | multBy: 2 }}</p>
+<p>{{ 4 | multBy: 2 }}</p>
+<p>{{ 5 | multBy: 2 }}</p>
+<p>Wait for it... {{ p | async}}</p>
+<p>Date: {{ myDate | async | date: 'HH:mm:ss'}}</p>
+
+<input type="text" [(ngModel)]="search">
+<div *ngFor="let post of posts | filter: search" class="card">
+  <h2>{{ post.title }}</h2>
+  <h2>{{ post.text }}</h2>
+</div>

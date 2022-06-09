@@ -1,0 +1,6 @@
+<button class="btn" (click)="isVisible = !isVisible">Toggle</button>
+<div class="wrap" *appIfnot="!isVisible">
+  Hello my darling!
+</div>
+<p appStyle color="green" [dStyles]="{ border: '1px solid blue', fontWeight: 'bold', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+<p appStyle color="blue" [dStyles]="{ border: '1px solid red', fontWeight: 'bold', borderRadius: '5px'}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>

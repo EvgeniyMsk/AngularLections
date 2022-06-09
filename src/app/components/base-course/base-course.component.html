@@ -1,0 +1,10 @@
+<app-post-form (em)="addPost($event)"></app-post-form>
+
+<app-post *ngFor="let post of posts" [post]="post" (remove)="removePost($event)">
+  <div #info>
+    <small *ngIf="post.text.length > 5; else short">Пост длинный</small>
+    <ng-template #short>
+      <small>Пост короткий</small>
+    </ng-template>
+  </div>
+</app-post>
