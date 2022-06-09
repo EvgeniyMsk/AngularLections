@@ -39,6 +39,8 @@
 <!--</div>-->
 
 <div class="container">
+  <app-switch [(ngModel)]="appState" (ngModelChange)="handleChange()"></app-switch>
+  <p>{{ appState }}</p>
   <form class="card" [formGroup]="form" (ngSubmit)="submit()">
     <h1>Angular Forms</h1>
 
@@ -52,6 +54,13 @@
         <small *ngIf="form.get('email')?.errors?.email">
           Поле email некорректно.
         </small>
+        <small *ngIf="form.get('email')?.errors?.restrictedEmail">
+          Email запрещен
+        </small>
+        <small *ngIf="form.get('email')?.errors?.uniqueEmail">
+          Email занят
+        </small>
+        <pre>{{ form.get('email')?.errors | json }}</pre>
       </div>
     </div>
 
@@ -68,13 +77,13 @@
       </div>
     </div>
 
-    <div class="card">
+    <div class="card" formGroupName="address">
       <h2>Адрес</h2>
 
       <div class="form-control">
         <label>Страна</label>
 
-        <select>
+        <select formControlName="country">
           <option value="ru">Россия</option>
           <option value="ua">Украина</option>
           <option value="by">Беларусь</option>
@@ -82,22 +91,22 @@
       </div>
 
       <div class="form-control">
-        <input type="text">
+        <input type="text" formControlName="city" placeholder="Город">
       </div>
 
-      <button class="btn" type="button">Выбрать столицу</button>
+      <button class="btn" type="button" (click)="setCapital()">Выбрать столицу</button>
     </div>
 
-    <div class="card">
+    <div class="card" formGroupName="skills">
       <h2>Ваши навыки</h2>
-      <button class="btn" type="button">Добавить умение</button>
-      <div class="form-control">
-        <label></label>
-        <input type="text">
+      <button class="btn" type="button" (click)="addSkill()">Добавить умение</button>
+      <div class="form-control" *ngFor="let control of getFormControls(); let idx = index">
+        <label>Умение {{ idx + 1}}</label>
+        <input type="text" [formControlName]="idx">
       </div>
     </div>
-
-    <button type="submit" [disabled]="form.invalid">Отправить</button>
+    <pre>{{ form.value | json }}</pre>
+    <button type="submit" [disabled]="form.invalid || form.pending ">Отправить</button>
 
   </form>
 </div>

@@ -21,6 +21,7 @@ import { IfnotDirective } from './directives/ifnot.directive';
 import { MultByPipe } from './pipes/mult-by.pipe';
 import { FilterPipe } from './pipes/filter.pipe';
 import { TestComponentComponent } from './components/test-component/test-component.component';
+import { SwitchComponent } from './switch/switch.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +32,8 @@ import { TestComponentComponent } from './components/test-component/test-compone
     IfnotDirective,
     MultByPipe,
     FilterPipe,
-    TestComponentComponent
+    TestComponentComponent,
+    SwitchComponent
   ],
   imports: [
     BrowserModule,
