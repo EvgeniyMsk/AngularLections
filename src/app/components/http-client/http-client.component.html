@@ -1,23 +1,37 @@
 <div class="container">
   <h1>Angular HttpClient</h1>
+  <input type="number" [(ngModel)]="count">
+  <button class="btn" (click)="getPosts()">Загрузить</button>
 
   <div class="card">
     <div class="form-control">
-      <input type="text" placeholder="Название">
+      <input type="text" placeholder="Название" [(ngModel)]="title">
     </div>
-    <button class="btn">Добавить</button>
+    <button class="btn" (click)="sendPost()">Добавить</button>
     <button class="btn">Загрузить</button>
   </div>
-
   <hr>
-
-  <div class="card">
-    <p>
-      <span class="completed">Название</span>
-      <span>
-        <button class="btn btn-danger">Удалить</button>
-        <button class="btn">Завершить</button>
-      </span>
-    </p>
+  <div *ngIf="loading; else showInfo">
+    <mat-spinner></mat-spinner>
   </div>
+  <div *ngIf="isSorry">
+    Ошибка загрузки
+  </div>
+
+  <ng-template #showInfo>
+    <div *ngIf="todos.length > 0; else noTodos">
+      <div class="card" *ngFor="let iterToDo of todos">
+        <p>
+          <span [class.completed]="iterToDo.completed">{{ iterToDo.title }}</span>
+          <span>
+        <button class="btn btn-danger" (click)="removeTodo(iterToDo.id)">Удалить</button>
+        <button class="btn" [disabled]="iterToDo.completed" (click)="completeTodo(iterToDo.id)">Завершить</button>
+      </span>
+        </p>
+      </div>
+    </div>
+    <ng-template #noTodos>
+      <div>Список пуст :(</div>
+    </ng-template>
+  </ng-template>
 </div>

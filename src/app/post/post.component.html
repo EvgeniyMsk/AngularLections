@@ -1,6 +1,6 @@
 <div class="card">
   <p>{{ post.id }}</p>
-  <p>{{ post.title }}</p>
+  <a [routerLink]="['/posts', post.id ]">{{ post.title }}</a>
   <p>{{ post.text }}</p>
   <button class="btn" (click)="removePost()">&times;</button>
   <button class="btn" (click)="changeColor()">Change Color</button>

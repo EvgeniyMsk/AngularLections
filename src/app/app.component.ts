@@ -3,6 +3,7 @@ import {interval, Observable, Subject, Subscription} from "rxjs";
 import {filter} from "rxjs/operators";
 import {FormArray, FormControl, FormGroup, Validators} from "@angular/forms";
 import {MyValidators} from "./my.validators";
+import {AuthService} from "./services/auth.service";
 
 export interface Post {
   title: string,
@@ -21,10 +22,7 @@ export interface Pair {
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit {
-
-
-
-  constructor() {
+  constructor(public auth: AuthService) {
   }
 
   ngOnInit(): void {

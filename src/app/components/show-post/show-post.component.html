@@ -1,0 +1,9 @@
+<strong *ngIf="showId === true">ID: {{ post.id }}</strong>
+<p>{{ post.title }}</p>
+<p>{{ post.text }}</p>
+<button class="btn" [routerLink]="['/posts', post.id]" [queryParams]="{ showId: true }">Show Id</button>
+<button class="btn" [routerLink]="['/posts']" (click)="showIdProgram()">Show id by program</button>
+<button class="btn" [routerLink]="['/posts', post.id]">Hide Ids</button>
+<button class="btn" [routerLink]="['/base']" [queryParams]="">Back</button>
+<button class="btn" [routerLink]="['/base']" fragment="pashalka">To pashalka</button>
+<button class="btn" (click)="loadPostId()">Load post id</button>
